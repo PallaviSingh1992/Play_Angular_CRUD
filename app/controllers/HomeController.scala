@@ -42,13 +42,21 @@ class HomeController @Inject()(service:InternRepo) extends Controller {
 
 
 
+  implicit val internWrites: Reads[Interns] = (
+    (JsPath \ "id").read[Int] and
+      (JsPath \ "name").read[String] and
+      (JsPath \ "email").read[String] and
+      (JsPath \ "mobile").read[String] and
+      (JsPath \ "address").read[String] and
+      (JsPath \ "emergency").read[String]) (unlift(Interns.unapply))
+
   implicit val internReads: Writes[Interns] = (
     (JsPath \ "id").write[Int] and
       (JsPath \ "name").write[String] and
       (JsPath \ "email").write[String] and
       (JsPath \ "mobile").write[String] and
       (JsPath \ "address").write[String] and
-      (JsPath \ "emergency").write[String]) (unlift(Interns.unapply))
+      (JsPath \ "emergency").write[String]) (Interns.apply._)
 
   def index = Action {
     Ok(views.html.index("Your new application is Ready."))

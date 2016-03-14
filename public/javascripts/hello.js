@@ -8,7 +8,7 @@ if (window.console) {
         var data = {"id":parseInt($scope.id),"name":$scope.name,"email":$scope.email,"address":$scope.address,"mobile":$scope.mobile,"emergency":$scope.emergency};
           $http({
                           method: 'POST',
-                          url:'http://localhost:9000/student/save',
+                          url:'/insert',
                           data: JSON.stringify(data),
                           contentType: "application/json",
                           dataType: "json"
