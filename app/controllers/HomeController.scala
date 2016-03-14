@@ -12,6 +12,8 @@ import repository.Interns
 import play.api.libs.json.Reads._
 import play.api.libs.functional.syntax._
 
+import scala.concurrent.Future
+
 /**
  * This controller creates an `Action` to handle HTTP requests to the
  * application's home page.
@@ -24,7 +26,7 @@ class HomeController @Inject()(service:InternRepo) extends Controller {
     mapping(
       "id" -> number,
       "name" ->nonEmptyText,
-      "email"->email,
+      "email"->nonEmptyText,
       "mobile"->nonEmptyText,
       "address"->nonEmptyText,
       "emergency"->nonEmptyText
@@ -71,7 +73,19 @@ class HomeController @Inject()(service:InternRepo) extends Controller {
     }
   }
 
+  def insert=Action.async{implicit request=>
+    userForm.bindFromRequest.fold(
+      formWithErrors => {
+       Future{BadRequest(views.html.interns(formWithErrors))}
+      },
+      userData => {
+        service.insert(userData).map { intern =>
+          Redirect(routes.HomeController.interns())
+        }
+      }
+    )
 
+  }
 
 }
 
