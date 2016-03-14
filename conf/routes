@@ -6,6 +6,8 @@
 GET     /                           controllers.HomeController.index
 GET     /showlist                       controllers.HomeController.showList
 GET     /list                       controllers.HomeController.list
+POST     /insert                     controllers.HomeController.insert
+POST     /update/:id                 controllers.HomeController.update(id:Int)
 
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count

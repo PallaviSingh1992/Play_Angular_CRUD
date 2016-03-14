@@ -71,7 +71,7 @@ class HomeController @Inject()(service:InternRepo) extends Controller {
     }
   }
 
-  def insert(id:)
+
 
 }
 
