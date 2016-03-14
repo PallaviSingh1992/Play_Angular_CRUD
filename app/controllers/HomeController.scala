@@ -42,10 +42,13 @@ class HomeController @Inject()(service:InternRepo) extends Controller {
     }}
     }
 
+
   def showList = Action{
 
     Ok(views.html.interns())
   }
+
+
 
   }
 
