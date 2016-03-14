@@ -47,6 +47,8 @@ class HomeController @Inject()(service:InternRepo) extends Controller {
     Ok(views.html.interns())
   }
 
+
+
   }
 
 
