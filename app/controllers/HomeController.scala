@@ -87,5 +87,19 @@ class HomeController @Inject()(service:InternRepo) extends Controller {
 
   }
 
+  def update=Action.async{implicit request=>
+    userForm.bindFromRequest.fold(
+      formWithErrors => {
+        Future{BadRequest(views.html.interns(formWithErrors))}
+      },
+      userData => {
+        service.update(userData).map { intern =>
+          Redirect(routes.HomeController.interns())
+        }
+      }
+    )
+
+  }
+
 }
 
