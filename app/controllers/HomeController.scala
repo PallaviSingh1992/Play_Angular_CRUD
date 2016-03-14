@@ -23,14 +23,6 @@ class HomeController @Inject()(service:InternRepo) extends Controller {
    * will be called when the application receives a `GET` request with
    * a path of `/`.
    */
-
-
-
-  def index = Action {
-    Ok(views.html.index("Your new application is writey."))
-  }
-
-
   implicit val internReads: Writes[Interns] = (
     (JsPath \ "id").write[Int] and
       (JsPath \ "name").write[String] and
@@ -39,16 +31,22 @@ class HomeController @Inject()(service:InternRepo) extends Controller {
       (JsPath \ "address").write[String] and
       (JsPath \ "emergency").write[String] )(unlift(Interns.unapply))
 
+  def index = Action {
+    Ok(views.html.index("Your new application is Ready."))
+  }
+
   def list = Action.async { implicit request =>
     val list = service.getAll()
     list.map{intern => {
-     val v = Json.toJson(intern)
-      Ok(v)
+     Ok(Json.toJson(intern))
     }}
     }
+
   def showList = Action{
+
     Ok(views.html.interns())
   }
+
   }
 
 

@@ -2,15 +2,28 @@
 
 
 <div ng-controller="InternCtrl">
-
-<table>
-    <tr ng-repeat="intern in dataList">
-        <input type="text" ng-model="user">
-        <p>{{user}}</p>
-        <td>{{intern.name}}</td>
-
-    </tr>
-</table>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <table class="table table-hover">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile No.</th>
+                    <th>Address</th>
+                    <th>Emergency Contact</th>
+                </tr>
+                <tr ng-repeat="intern in dataList">
+                    <td>{{intern.name}}</td>
+                    <td>{{intern.email}}</td>
+                    <td>{{intern.address}}</td>
+                    <td>{{intern.mobile}}</td>
+                    <td>{{intern.emergency}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
 
 </div>
 
