@@ -84,7 +84,7 @@ class HomeController @Inject()(service:InternRepo) extends Controller {
   def insert=Action.async{implicit request=>
     userForm.bindFromRequest.fold(
       formWithErrors => {
-       Future{BadRequest(views.html.interns(formWithErrors))}
+       Future{println(formWithErrors);BadRequest(views.html.interns(formWithErrors))}
       },
       userData => {
         service.insert(userData).map { intern =>
