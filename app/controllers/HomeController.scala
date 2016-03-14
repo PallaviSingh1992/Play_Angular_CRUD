@@ -22,7 +22,7 @@ class HomeController @Inject()(service:InternRepo) extends Controller {
 
   val userForm = Form(
     mapping(
-      "id" -> ,
+      "id" -> number,
       "name" ->nonEmptyText,
       "email"->email,
       "mobile"->nonEmptyText,
@@ -70,6 +70,8 @@ class HomeController @Inject()(service:InternRepo) extends Controller {
       Ok(views.html.interns())
     }
   }
+
+  def insert(id:)
 
 }
 
