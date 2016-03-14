@@ -33,5 +33,5 @@ class InternRepo @Inject()(protected val dbConfigProvider:DatabaseConfigProvider
   def getById(id:Int):Future[Option[Interns]]=db.run{ tableQuery.filter(_.id==id).result.headOption}
   def insert(name:String,email:String,mobile:String,address:String,emergency:String):Future[Int]=db.run{tableQuery+=Interns(1,name,email,mobile,address,emergency)}
   def delete(id:Int):Future[Int]=db.run{tableQuery.filter(_.id==id).delete}
-  def update(id:Int,name:String,email:String,mobile:String,address:String,emergency:String):Future[Int]=db.run{tableQuery.filter(_.id==id).update(Interns(id,,name,email,mobile,address,emergency))}
+  def update(id:Int,name:String,email:String,mobile:String,address:String,emergency:String):Future[Int]=db.run{tableQuery.filter(_.id==id).update(Interns(id,name,email,mobile,address,emergency))}
 }
