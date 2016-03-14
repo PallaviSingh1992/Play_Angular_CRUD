@@ -1,26 +1,32 @@
+@main("List Interns"){
 <br>
 <center>
-    <div ng-controller="addCtrl" id="middle">
+    <div data-ng-controller="Add" >
         <h1>STUDENT INFORMATION</h1>
         <h2>Add student details </h2>
         <br>
         <form>
             <br>
-            <input type="text" placeholder="Intern Name" class="text" ng-model="name" size="30">
+            <input type="hidden" data-ng-model="id" value="1">
+            <input type="text" placeholder="Intern Name" class="text" data-ng-model="name" size="30">
             <br>
             <br>
-            <input type="text" placeholder="Intern Email" class="text" ng-model="email" size="30">
+            <input type="text" placeholder="Intern Email" class="text" data-ng-model="email" size="30">
             <br>
-            <input type="text" placeholder="Intern Mobile" class="text" ng-model="mobile" size="30">
+            <input type="text" placeholder="Intern Mobile" class="text" data-ng-model="mobile" size="30">
             <br>
-            <input type="text" placeholder="Intern Address" class="text" ng-model="address" size="30">
+            <input type="text" placeholder="Intern Address" class="text" data-ng-model="address" size="30">
             <br>
-            <input type="text" placeholder="Intern Emergency number" class="text" ng-model="emergency" size="30">
+            <input type="text" placeholder="Intern Emergency number" class="text" data-ng-model="emergency" size="30">
             <br>
             <br>
-            <input type="submit" class="button" data-ng-click="saveIt()" value="Add Intern"> <br><br>
+            <input type="button" class="button" data-ng-click="saveIt()" value="Add Intern"> <br><br>
             <br><br>
         </form>
 
     </div>
+    <script type="text/javascript" src="@routes.Assets.versioned("javascripts/add.js")">
+    <script src="angular.js">
+         <script src="angular-route.js">
 </center>
+}

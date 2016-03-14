@@ -9,9 +9,9 @@ import play.api.mvc._
 import repository.InternRepo
 import scala.concurrent.ExecutionContext.Implicits.global
 import repository.Interns
-import play.api.libs.json.Reads._
+import play.api.libs.json._
 import play.api.libs.functional.syntax._
-
+import play.api.libs.json.Reads._
 import scala.concurrent.Future
 
 /**
@@ -40,23 +40,13 @@ class HomeController @Inject()(service:InternRepo) extends Controller {
     * a path of `/`.
     */
 
-
-
-  implicit val internWrites: Reads[Interns] = (
-    (JsPath \ "id").read[Int] and
-      (JsPath \ "name").read[String] and
-      (JsPath \ "email").read[String] and
-      (JsPath \ "mobile").read[String] and
-      (JsPath \ "address").read[String] and
-      (JsPath \ "emergency").read[String]) (unlift(Interns.unapply))
-
-  implicit val internReads: Writes[Interns] = (
+  implicit val internWrites: Writes[Interns] = (
     (JsPath \ "id").write[Int] and
       (JsPath \ "name").write[String] and
       (JsPath \ "email").write[String] and
       (JsPath \ "mobile").write[String] and
       (JsPath \ "address").write[String] and
-      (JsPath \ "emergency").write[String]) (Interns.apply._)
+      (JsPath \ "emergency").write[String]) (unlift(Interns.unapply))
 
   def index = Action {
     Ok(views.html.index("Your new application is Ready."))
@@ -84,29 +74,33 @@ class HomeController @Inject()(service:InternRepo) extends Controller {
   def insert=Action.async{implicit request=>
     userForm.bindFromRequest.fold(
       formWithErrors => {
-       Future{println(formWithErrors);BadRequest(views.html.interns(formWithErrors))}
+       Future{println(formWithErrors);BadRequest(views.html.interns())}
       },
       userData => {
         service.insert(userData).map { intern =>
-          Redirect(routes.HomeController.interns())
+          Redirect(routes.HomeController.showList())
         }
       }
     )
 
   }
 
-  def update=Action.async{implicit request=>
+  def update(id:Int)=Action.async{implicit request=>
     userForm.bindFromRequest.fold(
       formWithErrors => {
-        Future{BadRequest(views.html.interns(formWithErrors))}
+        Future{BadRequest(views.html.interns())}
       },
       userData => {
         service.update(userData).map { intern =>
-          Redirect(routes.HomeController.interns())
+          Redirect(routes.HomeController.showList())
         }
       }
     )
 
+  }
+
+  def showAdd = Action{
+    Ok(views.html.add())
   }
 
 }
