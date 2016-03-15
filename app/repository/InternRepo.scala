@@ -31,7 +31,9 @@ class InternRepo @Inject()(protected val dbConfigProvider:DatabaseConfigProvider
   import driver.api._
   def getAll():Future[List[Interns]]=db.run{ tableQuery.to[List].result}
 
-  def insert(intern:Interns):Future[Int]=db.run{tableQuery+=intern}
+  def insert(intern:Interns):Future[Int]=db.run{
+    println(intern)
+  	tableQuery+=intern}
   def delete(id:Int):Future[Int]=db.run{tableQuery.filter(_.id===id).delete}
   def update(intern:Interns):Future[Int]=db.run{tableQuery.filter(_.id===intern.id).update(intern)}
 }
