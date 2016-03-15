@@ -102,7 +102,7 @@ class HomeController @Inject()(service:InternRepo) extends Controller {
     val intern=service.getById(id)
     intern.map{values=>
       val v=Interns(values.id,values.name,values.email,values.mobile,values.address,values.emergency)
-      Ok(views.html.EditIntern(userForm.fill(v)))
+      Ok(views.html.editIntern(userForm.fill(v)))
     }
 
   }
