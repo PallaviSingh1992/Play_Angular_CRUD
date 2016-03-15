@@ -22,8 +22,11 @@
         <input type="submit" class="btn btn-primary" data-ng-click="updateIt()" value="Update Intern" >
         <br><br>
     </form>
+    </div>
+<div data-ng-controller ="DeleteController">
+    <input type="hidden" class="text" ng-model="id" size="30" ng-init='id="@user.id"'>
+    <input type="button" data-ng-click="Delete()" value="Delete This">
 </div>
 
-<script type="text/javascript" src="@routes.Assets.versioned("javascripts/update.js")">
-</script>
+<script type="text/javascript" src="@routes.Assets.versioned("javascripts/update.js")"></script>
     }

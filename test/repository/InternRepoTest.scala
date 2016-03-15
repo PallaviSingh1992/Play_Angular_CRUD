@@ -26,6 +26,12 @@ class InternRepoTest extends Specification {
       val response=Await.result(res,Duration.Inf)
       response===1
     }
+
+    "delete record" in new WithApplication() {
+      val res=internRepo.delete(2)
+      val response=Await.result(res,Duration.Inf)
+      response===1
+    }
   }
 
 }
