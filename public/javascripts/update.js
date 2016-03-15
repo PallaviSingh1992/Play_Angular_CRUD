@@ -3,20 +3,18 @@ var internApp = angular.module('internApp', []);
 
     alert("Coming here 1");
         internApp.controller('UpdateController', function ($scope, $http){
-            alert("Coming here 2");
+        $scope.updateIt = function(){
+        alert("");
+var data1 = {"id":parseInt($scope.id),"name":$scope.name,"email":$scope.email,"mobile":$scope.mobile,"address":$scope.address,"emergency":$scope.emergency};
+/*alert(data1);*/
 
-        $scope.SaveIt = function(){
-var data1 = {"id":1,"name":$scope.name,"email":$scope.email,"mobile":$scope.mobile,"address":$scope.address,"emergency":$scope.emergency};
-alert(data1);
        return $http({
                      method:'POST',
-                     url:'/update',
+                     url:'/update/'+$scope.id,
                      data: JSON.stringify(data1),
                      contentType: 'application/json',
                      dataType:'json'
                  })
-
-
         }})
 
 
