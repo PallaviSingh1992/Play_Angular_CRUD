@@ -27,10 +27,22 @@ class InternRepoTest extends Specification {
       response===1
     }
 
-    "delete record" in new WithApplication() {
-      val res=internRepo.delete(2)
+    "update record" in new WithApplication() {
+      val res=internRepo.update(Interns(1,"himani","himani@knoldus.in","889934657","delhi","22569090"))
       val response=Await.result(res,Duration.Inf)
       response===1
+    }
+
+    "delete record" in new WithApplication() {
+      val res=internRepo.delete(1)
+      val response=Await.result(res,Duration.Inf)
+      response===1
+    }
+
+    "get records by id" in new WithApplication() {
+      val res=internRepo.getById(1)
+      val response=Await.result(res,Duration.Inf)
+      response.id===1
     }
   }
 
