@@ -17,7 +17,6 @@ var internApp = angular.module('internApp', []);
                  })
 
         }
-
         })
 
         internApp.controller('DeleteController', function ($scope, $http){
