@@ -20,6 +20,12 @@ class InternRepoTest extends Specification {
       val response = Await.result(res, Duration.Inf)
       response.head.id ===1
     }
+
+    "add record" in new WithApplication() {
+      val res=internRepo.insert(Interns(4,"Prabhat","prabhat@knoldus.in","9988111000","Moti Bagh","9988877711"))
+      val response=Await.result(res,Duration.Inf)
+      response===1
+    }
   }
 
 }
