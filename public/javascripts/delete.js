@@ -5,7 +5,3 @@
             $http.get('/delete/'+data).success(function(data) {
             alert("deleted" +data)});
         });
-
-
-
-

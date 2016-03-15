@@ -10,7 +10,7 @@ POST     /insert                     controllers.HomeController.insert
 POST     /update/:id                 controllers.HomeController.update(id:Int)
 GET      /add                       controllers.HomeController.showAdd
 GET     /edit/:id                   controllers.HomeController.update(id:Int)
-
+GET     /delete/:Id                 controllers.HomeControllers.delete(id:Int)
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count
 # An example controller showing how to write asynchronous code
