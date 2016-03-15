@@ -101,8 +101,8 @@ class HomeController @Inject()(service:InternRepo) extends Controller {
   def editIntern(id:Int)=Action.async{
     val intern=service.getById(id)
     intern.map{values=>
-      Interns(values.id,values.name,values.email,values.mobile,values.address,values.emergency)
-      Ok("")
+      val v=Interns(values.id,values.name,values.email,values.mobile,values.address,values.emergency)
+      Ok(views.html.EditIntern(userForm.fill(v)))
     }
 
   }
