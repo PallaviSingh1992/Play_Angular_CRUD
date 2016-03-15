@@ -18,7 +18,7 @@
                     <th style="color:#003333;">Emergency Contact</th>
                 </tr>
                 <tr ng-repeat="intern in dataList | filter:searchId">
-                    <td>{{intern.name}}</td>
+                    <td><a href="/edit/{{intern.id}}">{{intern.name}}</a></td>
                     <td>{{intern.email}}</td>
                     <td>{{intern.address}}</td>
                     <td>{{intern.mobile}}</td>
