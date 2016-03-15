@@ -82,10 +82,9 @@ class HomeController @Inject()(service:InternRepo) extends Controller {
         }
       }
     )
-
   }
 
-  def update(id:Int)=Action.async{implicit request=>
+  def update=Action.async{implicit request=>
     userForm.bindFromRequest.fold(
       formWithErrors => {
         Future{BadRequest(views.html.interns())}
@@ -96,6 +95,15 @@ class HomeController @Inject()(service:InternRepo) extends Controller {
         }
       }
     )
+
+  }
+
+  def editIntern(id:Int)=Action.async{
+    val intern=service.getById(id)
+    intern.map{values=>
+      Interns(values.id,values.name,values.email,values.mobile,values.address,values.emergency)
+      Ok("")
+    }
 
   }
 
