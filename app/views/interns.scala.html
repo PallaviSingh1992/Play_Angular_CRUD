@@ -10,6 +10,7 @@
             </table>
 
             <table class="table table-hover">
+                <thead>
                 <tr>
                     <th style="color:#003333;">Name</th>
                     <th style="color:#003333;">Email</th>
@@ -17,6 +18,8 @@
                     <th style="color:#003333;">Address</th>
                     <th style="color:#003333;">Emergency Contact</th>
                 </tr>
+                </thead>
+                <tbody>
                 <tr ng-repeat="intern in dataList | filter:searchId">
                     <td><a href="/edit/{{intern.id}}">{{intern.name}}</a></td>
                     <td>{{intern.email}}</td>
@@ -24,7 +27,10 @@
                     <td>{{intern.mobile}}</td>
                     <td>{{intern.emergency}}</td>
                 </tr>
+                </tbody>
             </table>
+            <a href="/add" class="btn btn-info btn-lg  pull-right" role="button">ADD INTERN</a>
+
         </div>
         <div class="col-md-2"></div>
     </div>
