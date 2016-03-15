@@ -111,5 +111,9 @@ class HomeController @Inject()(service:InternRepo) extends Controller {
     Ok(views.html.add())
   }
 
+  def showEdit =Action{
+    Ok(views.html.editIntern())
+  }
+
 }
 
