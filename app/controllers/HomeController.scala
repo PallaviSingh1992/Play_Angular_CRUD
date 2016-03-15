@@ -78,7 +78,7 @@ class HomeController @Inject()(service:InternRepo) extends Controller {
       },
       userData => {
         service.insert(userData).map { intern =>
-          Redirect(routes.HomeController.showList())
+          Ok(views.html.interns())
         }
       }
     )
